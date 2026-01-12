@@ -1,65 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DDOG ILL - DDOGDPS Impossible Demon List</title>
-    <style>
-        body { background: #000; color: #f00; font-family: Arial, sans-serif; margin: 0; padding: 20px; }
-        header { text-align: center; padding: 20px; border-bottom: 2px solid #f00; }
-        h1 { font-size: 2.5em; margin: 0; text-shadow: 0 0 10px #f00; }
-        .list { max-width: 800px; margin: 20px auto; }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { padding: 10px; text-align: left; border: 1px solid #333; }
-        th { background: #111; }
-        tr:nth-child(even) { background: #111; }
-        .form { max-width: 500px; margin: 20px auto; padding: 20px; border: 1px solid #f00; }
-        input, textarea, button { width: 100%; margin: 10px 0; padding: 10px; background: #111; color: #f00; border: 1px solid #f00; }
-        button { cursor: pointer; }
-        footer { text-align: center; padding: 20px; font-size: 0.8em; }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>🔥 DDOG ILL 🔥</h1>
-        <p>DDOGDPS Impossible Demon List - Hardest unverified/beast levels</p>
-    </header>
-    
-    <section class="list">
-        <h2>Top 50 Impossible Demons</h2>
-        <table>
-            <thead>
-                <tr><th>Rank</th><th>Level</th><th>Creator</th><th>Progress %</th><th>Verifier</th></tr>
-            </thead>
-            <tbody>
-                <!-- Add levels here, e.g. from DDOGDPS extremes like Silent Steps [web:2] -->
-                <tr><td>1</td><td>Silent Steps</td><td>Unknown</td><td>0%</td><td>Unverified</td></tr>
-                <tr><td>2</td><td>[Add Level]</td><td>-</td><td>0%</td><td>-</td></tr>
-                <!-- Repeat for 50 rows or make dynamic with JS -->
-            </tbody>
-        </table>
-    </section>
-    
-    <section class="form">
-        <h2>Submit Record</h2>
-        <form id="recordForm">
-            <input type="text" placeholder="Level Name" required>
-            <input type="text" placeholder="Your Username" required>
-            <input type="number" placeholder="Progress %" min="0" max="100" step="0.1" required>
-            <textarea placeholder="Video Proof Link (YouTube/Twitch)" required></textarea>
-            <button type="submit">Submit</button>
-        </form>
-    </section>
-    
-    <footer>
-        <p>Official DDOGDPS: <a href="https://ddogdgdps.ps.fhgdps.com/dashboard/" style="color: #f00;">Play Here</a> | Discord: https://discord.gg/7WA4bxHfr6 [web:1]</p>
-    </footer>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DDOG ILL - DDOGDPS Impossible Demon List</title>
 
-    <script>
-        document.getElementById('recordForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Record submitted! (Demo - integrate with backend/DB for real use)');
-        });
-    </script>
+  <style>
+    body {
+      background: #000;
+      color: #f00;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      border-bottom: 2px solid #f00;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin: 0;
+      text-shadow: 0 0 10px #f00;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .list {
+      max-width: 900px;
+      margin: 30px auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #333;
+    }
+
+    th {
+      background: #111;
+    }
+
+    tr:nth-child(even) {
+      background: #111;
+    }
+
+    .discord-box {
+      max-width: 500px;
+      margin: 30px auto;
+      padding: 20px;
+      border: 1px solid #f00;
+      text-align: center;
+    }
+
+    .discord-box p {
+      margin-bottom: 15px;
+    }
+
+    .discord-btn {
+      display: inline-block;
+      padding: 12px 20px;
+      background: #111;
+      color: #f00;
+      border: 2px solid #f00;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .discord-btn:hover {
+      background: #f00;
+      color: #000;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.8em;
+      opacity: 0.8;
+    }
+
+    footer a {
+      color: #f00;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>🔥 DDOG ILL 🔥</h1>
+    <p>DDOGDPS Impossible Demon List<br>Levels not expected to be beaten.</p>
+  </header>
+
+  <section class="list">
+    <h2>Top Impossible Levels</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Level</th>
+          <th>Creator</th>
+          <th>Best Progress</th>
+          <th>Verifier</th>
+        </tr>
+      </thead>
+      <tbody id="levelTable"></tbody>
+    </table>
+  </section>
+
+  <section class="discord-box">
+    <h2>Submissions</h2>
+    <p>
+      All records, progress updates, and verification attempts are handled
+      through Discord. This site is read-only.
+    </p>
+    <a
+      class="discord-btn"
+      href="https://discord.gg/7WA4bxHfr6"
+      target="_blank"
+    >
+      Submit on Discord
+    </a>
+  </section>
+
+  <footer>
+    <p>
+      Official DDOGDPS:
+      <a href="https://ddogdgdps.ps.fhgdps.com/dashboard/" target="_blank">
+        Play Here
+      </a>
+      <br />
+      © DDOGDPS Impossible List
+    </p>
+  </footer>
+
+  <script>
+    const levels = [
+      {
+        name: "Silent Steps",
+        creator: "Unknown",
+        progress: "0%",
+        verifier: "Unverified"
+      },
+      {
+        name: "Theoretical Hell",
+        creator: "DDOG Team",
+        progress: "12%",
+        verifier: "No one"
+      }
+    ];
+
+    const table = document.getElementById("levelTable");
+
+    levels.forEach((lvl, i) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${i + 1}</td>
+        <td>${lvl.name}</td>
+        <td>${lvl.creator}</td>
+        <td>${lvl.progress}</td>
+        <td>${lvl.verifier}</td>
+      `;
+      table.appendChild(row);
+    });
+  </script>
 </body>
 </html>
